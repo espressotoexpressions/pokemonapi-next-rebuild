@@ -98,7 +98,7 @@ const getPokemonData = async(searchValue:string)=>{
 
 // useEffect(()=>{
 //   getPokemonData('2');
-// },[])
+// },[]) // dont call both of datacontext and the use effect on load together. it will break 
 
 useEffect(()=>{
   getPokemonData(pokeId);
