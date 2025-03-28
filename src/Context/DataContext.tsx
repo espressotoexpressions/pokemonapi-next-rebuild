@@ -7,11 +7,11 @@ interface DataInterface {
     setName : (name: string)=>void;
     }
 
-
+// orginal name of the data con
 const NameContext =createContext<DataInterface>({name:'',setName:name=>name})
 
 export function AppWrapper ({children}:{children:React.ReactNode}){
-    const [name, setName]=useState<string>('');
+    const [name, setName]=useState<string>('1');
 
     return(
         <NameContext.Provider value={{name,setName}}>

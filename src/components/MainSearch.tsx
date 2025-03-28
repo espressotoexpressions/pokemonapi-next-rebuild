@@ -10,7 +10,8 @@ import { useNameContext } from '@/Context/DataContext';
 import { IPokeAbility, IPokeMoves, IPokeType } from '@/interfaces/interface';
 
 
-const NavbarSearch = () => {
+const NavbarSearch = () => 
+  {
 // const [searchValue, setSearchValue] = useState<string>('1');
 const [searchValue, setSearchValue] = useState<string>('1');
 const [pokeId,setPokeId] = useState<string>('1');
@@ -96,7 +97,7 @@ const getPokemonData = async(searchValue:string)=>{
 }
 
 useEffect(()=>{
-  getPokemonData(pokeId);
+  getPokemonData('1');
 },[])
 
 useEffect(()=>{
