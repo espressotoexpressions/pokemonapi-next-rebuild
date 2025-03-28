@@ -8,7 +8,7 @@ interface DataInterface {
     }
 
 
-const NameContext =createContext<DataInterface>({name:'',setName:name=>''})
+const NameContext =createContext<DataInterface>({name:'',setName:name=>name})
 
 export function AppWrapper ({children}:{children:React.ReactNode}){
     const [name, setName]=useState<string>('');

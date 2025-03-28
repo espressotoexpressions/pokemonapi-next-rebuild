@@ -1,12 +1,13 @@
 'use client'
 
 import {getEvolutionPath, getLocation, getPokemon, getRandomNumber} from'@/services/pokemonservice';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,KeyboardEvent } from 'react'
 import PokeGrid from './PokeGrid';
 import Favorites from './Favorites';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShuffle } from '@fortawesome/free-solid-svg-icons';
 import { useNameContext } from '@/Context/DataContext';
+import { IPokeAbility, IPokeMoves, IPokeType } from '@/interfaces/interface';
 
 
 const NavbarSearch = () => {
@@ -21,10 +22,10 @@ const [location,setLocation]=useState<string>('');
 const [abilities, setAbilities]=useState<string>('');
 const [moves,setMoves]=useState<string>('');
 const [evoPath,setEvoPath]=useState<string[]>(['1']); 
-const {name,setName}=useNameContext();
+const {name}=useNameContext();
 
 // to handle when user hits "Enter" for search
-const handleKeyDown = (event:any) => {
+const handleKeyDown = (event:KeyboardEvent<HTMLInputElement>) => {
   if (event.key === "Enter") {
     console.log("DISPLAY " + searchValue);
     console.log("ENTER search");
@@ -56,7 +57,7 @@ const getPokemonData = async(searchValue:string)=>{
   let strType:string='N/A'
   if (data.types.length>0)
       {
-          strType=data.types.map((types:any)=> types.type.name).join(",");
+          strType=data.types.map((types:IPokeType)=> types.type.name).join(",");
           console.log("TYPES:"+strType);
           setPokeType(strType);
    
@@ -70,7 +71,7 @@ const getPokemonData = async(searchValue:string)=>{
   let strAbilities:string ="N/A"
    if (data.abilities.length>0)
        {
-           strAbilities = data.abilities.map((abilities:any)=> abilities.ability.name).join(', ');
+           strAbilities = data.abilities.map((abilities:IPokeAbility)=> abilities.ability.name).join(', ');
            console.log(strAbilities);
            setAbilities(strAbilities);
        }
@@ -82,7 +83,7 @@ const getPokemonData = async(searchValue:string)=>{
    let strMoves:string  ="N/A";
    if (data.moves.length>0)
        {
-           strMoves = data.moves.map((moves:any)=> moves.move.name).join(', ');
+           strMoves = data.moves.map((moves:IPokeMoves)=> moves.move.name).join(', ');
            console.log(strMoves);
            setMoves(strMoves);
        }

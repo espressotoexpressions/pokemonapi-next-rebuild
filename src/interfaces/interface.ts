@@ -11,3 +11,19 @@ export interface Pokemon{
 }
 
 
+export interface IPokeType{
+    type: {
+        name:string
+    }
+}
+
+export interface IPokeAbility{
+    ability: {
+        name:string
+    }
+}
+export interface IPokeMoves{
+    move: {
+        name:string
+    }
+}

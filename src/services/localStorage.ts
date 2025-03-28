@@ -1,7 +1,7 @@
 export const saveToFavorites=async (pokeId:string) =>{
     //get the current values that are saved into local storage
   
-    let pokeArr = await getFavorites();
+    const pokeArr = await getFavorites();
 
     //add new name into our pokeArr array
     if (!pokeArr.includes(pokeId)) {
@@ -20,7 +20,7 @@ export const getFavorites=()=>{
     // get all of the values that are stored in cityArr in local storage\
     if (typeof window !== 'undefined'){
 
-        let favoritesData = localStorage.getItem('PokeIds');
+        const favoritesData = localStorage.getItem('PokeIds');
         // console.log("FAVORITES DATA" +JSON.stringify(favoritesData));
         
         if (favoritesData == null) {
@@ -33,11 +33,11 @@ export const getFavorites=()=>{
 }
 
 export const removeFromFavorites=async (pokeId:string)=>{
-    let pokeArr =  getFavorites();
+    const pokeArr =  getFavorites();
 
     // find the index of the name in local storage
 
-    let pokeIdIndex = pokeArr.indexOf(pokeId);
+    const pokeIdIndex = pokeArr.indexOf(pokeId);
 
     //remove the name from the array using the splice method.
     //Start at the index of name and remove 1 item
@@ -51,9 +51,9 @@ export const removeFromFavorites=async (pokeId:string)=>{
 
 export const getFavoritesNames=async()=>{
 
-    let favoritesArr:string[]  = getFavorites();
+    const favoritesArr:string[]  = getFavorites();
 
-    let favoritesNamesArr: string[]=[];
+    const favoritesNamesArr: string[]=[];
     for (let j=0; j<favoritesArr.length ;j++) // displays items 
     {
         const pokeIdPromise= await fetch ("https://pokeapi.co/api/v2/pokemon/"+favoritesArr[j]);

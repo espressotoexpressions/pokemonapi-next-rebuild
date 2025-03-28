@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 const Favorites = () => {
     const [favoritesList, setFavoritesList ]=useState<string[]>([]);
-    const {name,setName}= useNameContext();
+    const {setName}= useNameContext();
     const getFavoritesNamesList =async()=>{
         const favoritesNamesData =  await getFavoritesNames();
         setFavoritesList(favoritesNamesData);

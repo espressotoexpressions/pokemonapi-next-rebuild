@@ -18,7 +18,7 @@ export const  getLocation= async (pokeID:string)=>{
     if (data.length>0)
         {
             console.log("LOC COUNT#" + data.length)
-            strLocation = data.map((info:any)=> info.location_area.name).join(', ');
+            strLocation = data.map((info:{location_area:{name:string}})=> info.location_area.name).join(', ');
             console.log(strLocation);
         }
         else 
@@ -36,7 +36,7 @@ export const getEvolutionPath=async (pokeID:string)=>{
     const evoPathPromise = await fetch(`${speciesData.evolution_chain.url}`);
     const evoPathData = await evoPathPromise.json();
 
-    let evoPathArr= [];
+    const evoPathArr= [];
     if (evoPathData.chain.evolves_to.length>0)
         {
 
@@ -77,7 +77,7 @@ export const getEvolutionPath=async (pokeID:string)=>{
         
 
 
-let evoPathImgArr=[];
+const evoPathImgArr=[];
 // if no evolution path set it to N/A
 if (evoPathArr.length<=0)
     { 
