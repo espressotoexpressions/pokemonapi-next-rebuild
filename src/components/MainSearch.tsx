@@ -111,7 +111,7 @@ useEffect(()=>{
 getPokemonData(name)
 },[name])
 
-
+console.log("MAIN COMPONENT");
   return (
     <div>
 
