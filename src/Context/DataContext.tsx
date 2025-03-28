@@ -11,7 +11,7 @@ interface DataInterface {
 const NameContext =createContext<DataInterface>({name:'',setName:name=>name})
 
 export function AppWrapper ({children}:{children:React.ReactNode}){
-    const [name, setName]=useState<string>('1');
+    const [name, setName]=useState<string>('2');
 
     return(
         <NameContext.Provider value={{name,setName}}>

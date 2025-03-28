@@ -96,9 +96,9 @@ const getPokemonData = async(searchValue:string)=>{
        
 }
 
-useEffect(()=>{
-  getPokemonData('1');
-},[])
+// useEffect(()=>{
+//   getPokemonData('2');
+// },[])
 
 useEffect(()=>{
   getPokemonData(pokeId);
