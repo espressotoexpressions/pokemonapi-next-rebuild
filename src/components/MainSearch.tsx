@@ -21,7 +21,7 @@ const [pokeType, setPokeType]=useState<string>('');
 const [location,setLocation]=useState<string>('');
 const [abilities, setAbilities]=useState<string>('');
 const [moves,setMoves]=useState<string>('');
-const [evoPath,setEvoPath]=useState<string[]>(['1']); 
+const [evoPath,setEvoPath]=useState<string[]>(['./assets/dexlogo.png']); 
 const {name}=useNameContext();
 
 // to handle when user hits "Enter" for search
@@ -50,12 +50,13 @@ const getPokemonData = async(searchValue:string)=>{
   const data =  await getPokemon(searchValue);
   setPokeId(data.id);
   setPokeName(data.name);
-  setPokeImg (data.sprites.other["official-artwork"].front_default);
-  setPokeImgShiny(data.sprites.other["official-artwork"].front_shiny);
-
+  // setPokeImg (data.sprites.other["official-artwork"].front_default);
+  // setPokeImgShiny(data.sprites.other["official-artwork"].front_shiny);
+  setPokeImg(data.sprites?.other?.["official-artwork"]?.front_default || "./assets/dexlogo.png");
+  setPokeImgShiny(data.sprites?.other?.["official-artwork"]?.front_shiny || "./assets/dexlogo.png");
   //create string type
   let strType:string='N/A'
-  if (data.types.length>0)
+  if (data.types?.length>0)
       {
           strType=data.types.map((types:IPokeType)=> types.type.name).join(",");
           console.log("TYPES:"+strType);
@@ -69,7 +70,7 @@ const getPokemonData = async(searchValue:string)=>{
   
    //iterate through all abilities
   let strAbilities:string ="N/A"
-   if (data.abilities.length>0)
+   if (data.abilities?.length>0)
        {
            strAbilities = data.abilities.map((abilities:IPokeAbility)=> abilities.ability.name).join(', ');
            console.log(strAbilities);
@@ -81,7 +82,7 @@ const getPokemonData = async(searchValue:string)=>{
 
    //iterate through Moves
    let strMoves:string  ="N/A";
-   if (data.moves.length>0)
+   if (data.moves?.length>0)
        {
            strMoves = data.moves.map((moves:IPokeMoves)=> moves.move.name).join(', ');
            console.log(strMoves);
